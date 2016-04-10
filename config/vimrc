@@ -1,0 +1,180 @@
+source  $HOME/.vim/config/abbreviations.vim
+
+" variablen setzen {{{
+set backupdir=~/.vim/backup,.
+set directory=~/.vim/backup,.
+" ,. aktuelles Verzeichnis ist default
+set shiftwidth=4
+set softtabstop=4
+
+set winminwidth=0
+set colorcolumn=100
+
+" sollte whitespaces einfärben (whitespace pl)
+"set syntax=whitespace
+
+set list
+set listchars=tab:>-
+
+" lets modified buffers hide (leave buffer despite unsaved changes)
+set hidden
+" spechert buffer bevor wechsel
+"set autowrite
+
+" enable backupfiles
+set backup
+
+let NERDTreeQuitOnOpen=1
+
+" }}}
+
+
+" mappings {{{
+inoremap jj <ESC>
+noremap <Space> i<Space><Esc>
+" edit personal vimrc
+nnoremap <leader>ev :split $HOME/.vim/config/vimrc<CR>
+" edit personal abbrevations
+nnoremap <leader>ea :split $HOME/.vim/config/abbreviations.vim<CR>
+
+" close buffer
+noremap <leader>w :bdelete<CR>
+noremap <leader>W :bdelete!<CR>
+inoremap <leader>w <ESC>:bdelete<CR>
+inoremap <leader>W :bdelete!<CR>
+
+" window vergrössern
+noremap + <C-W>+
+" window verkleinern
+noremap - <C-W>-
+" move line up
+nnoremap _ dd2kp
+" delete line in insert mode
+inoremap <C-D> <esc>ddi
+" scroll continuously
+noremap <leader>s <C-E>j:sleep 650m<CR><leader>s
+noremap <leader>S <C-E>j:sleep 450m<CR><leader>S
+" surrounds word with double quotes
+nnoremap <leader>2 vie<esc>a"<esc>bi"<esc>E
+" surrounds word with single quotes
+nnoremap <leader>' vie<esc>a'<esc>bi'<esc>E
+" jump to anchor (help)
+nnoremap <leader>t <c-]>
+" jump back
+nnoremap <leader>T <c-o>
+"
+" move till closing parantheses
+onoremap p t)
+" move till closing paranthese
+onoremap P t}
+" move over content of next parantheses
+onoremap in( :<C-U>normal! f(lvt)<CR>
+" move over content of last parantheses
+onoremap il( :<C-U>normal! F)hvT(<cr>
+" move over markdown heading
+onoremap ih :<C-U>execute "normal! ?^==\\\|--\\+$\r:nohlsearch\rkvg_"<cr>
+ " move over markdown heading including -/=
+onoremap ah :<C-U>execute "normal! ?^==\\\|--\\+$\r:nohlsearch\rg_vk0"<cr>
+" }}}
+
+
+" autocmds {{{
+augroup vimrc_autocmds
+    autocmd!
+    autocmd BufEnter * highlight OverLength ctermbg=darkgray guibg=#592929
+    autocmd BufEnter * match Overlength /\%100v.*/
+    autocmd VimEnter * call AirlineInit()
+augroup END
+
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+augroup filetype_xml
+    autocmd!
+    autocmd FileType xml setlocal shiftwidth=2 tabstop=2
+augroup END
+
+augroup filetype_tex
+    autocmd!
+    autocmd FileType tex setlocal shiftwidth=2 tabstop=2
+    "autocmd FileType tex  map  <F5> :w<CR>:make expand("%:r") . ".tex"<CR>
+    "autocmd FileType tex  imap <F5> <ESC>:w<CR>:make expand("%:r")<CR>
+augroup END
+
+augroup filetype_make
+    autocmd!
+    autocmd FileType tex setlocal noexpandtab
+    autocmd FileType tex setlocal tabstop=4
+augroup END
+" }}}
+
+
+" commands {{{
+command! -nargs=1 Bs :call BufferSelect("<args>")
+" }}}
+
+
+" functions {{{
+function! BufferSelect(pattern)
+    let bufcount = bufnr("$")
+    let currbufnr = 1
+    let nummatches = 0
+    let firstmatchingbufnr = 0
+    while currbufnr <= bufcount
+        if (bufexists(currbufnr))
+            let currbufname = bufname(currbufnr)
+            if (match(currbufname, a:pattern) > -1)
+                echo currbufnr . ": " . currbufname
+                let nummatches += 1
+                let firstmatchingbufnr = currbufnr
+            endif
+        endif
+        let currbufnr = currbufnr + 1
+    endwhile
+    if(nummatches == 1)
+        execute ":buffer ". firstmatchingbufnr
+    elseif(nummatches > 1)
+        let desiredbufnr = input("Enter buffer number: ")
+        if (strlen(desiredbufnr) != 0)
+            execute ":buffer ". desiredbufnr
+        endif
+    else
+        echo "No matching buffers"
+    endif
+endfunction
+
+function! AirlineInit()
+    "let g:airline_powerline_fonts=1
+
+    " themes
+    AirlineTheme term
+    ":AirlineTheme understated
+    ":AirlineTheme kolor
+
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+
+    " unicode symbols für separators
+    "let g:airline_left_sep = '»'
+    let g:airline_left_sep = '▶'
+    "let g:airline_right_sep = '«'
+    let g:airline_right_sep = '◀'
+    "let g:airline_symbols.linenr = '␊'
+    "let g:airline_symbols.linenr = '␤'
+    let g:airline_symbols.linenr = '¶'
+    let g:airline_symbols.branch = '⎇'
+    let g:airline_symbols.paste = 'ρ'
+    "let g:airline_symbols.paste = 'Þ'
+    "let g:airline_symbols.paste = '∥'
+    let g:airline_symbols.whitespace = 'Ξ'
+
+    " sections
+    let g:airline_section_z = '%3p%% | %l of %L | %c'
+endfunction
+
+" }}}
+
+
