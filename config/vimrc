@@ -99,8 +99,8 @@ augroup END
 augroup filetype_tex
     autocmd!
     autocmd FileType tex setlocal shiftwidth=2 tabstop=2
-    "autocmd FileType tex  map  <F5> :w<CR>:make expand("%:r") . ".tex"<CR>
-    "autocmd FileType tex  imap <F5> <ESC>:w<CR>:make expand("%:r")<CR>
+    autocmd FileType tex noremap <buffer> <f5> :w<cr>:call BuildTex()<cr>
+    autocmd FileType tex inoremap <buffer> <f5> <esc>:w<cr>:call BuildTex()<cr>
 augroup END
 
 augroup filetype_make
@@ -117,6 +117,7 @@ command! -nargs=1 Bs :call BufferSelect("<args>")
 
 
 " functions {{{
+" Buffer select {{{
 function! BufferSelect(pattern)
     let bufcount = bufnr("$")
     let currbufnr = 1
@@ -144,7 +145,9 @@ function! BufferSelect(pattern)
         echo "No matching buffers"
     endif
 endfunction
+" }}}
 
+" {{{ airline init
 function! AirlineInit()
     "let g:airline_powerline_fonts=1
 
@@ -174,7 +177,14 @@ function! AirlineInit()
     " sections
     let g:airline_section_z = '%3p%% | %l of %L | %c'
 endfunction
+" }}}
 
+" {{{ build tex
+function! BuildTex()
+    let filename = expand("%:r:t")
+    execute "make " . filename . ".pdf"
+endfunction
+" }}}
 " }}}
 
 
