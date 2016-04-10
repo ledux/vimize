@@ -8,7 +8,7 @@ private directories.
 Installation
 ------------
 
-git clone https://github.com/kraeki/vimize.git ~/.vim
+git clone https://github.com/ledux/vimize.git
 
 cd ~/.vim
 

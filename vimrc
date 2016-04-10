@@ -22,8 +22,8 @@ set relativenumber
 
 " tab settings
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+" set shiftwidth=2
+" set softtabstop=2
 
 " indenting
 set cindent
@@ -130,6 +130,8 @@ set laststatus=2 " Always show the statusline
 "
 if has("autocmd")
 
+  augroup vimize
+  autocmd!
   " set filetypes
   autocmd BufNewFile,BufRead *.gv set filetype=dot
   autocmd BufNewFile,BufRead *.feature set filetype=cucumber
@@ -168,6 +170,7 @@ if has("autocmd")
   " if FileType is shell script then start shell script
   autocmd FileType sh              map  <F5> :w<CR>:!$SHELL "%"<CR>
   autocmd FileType sh              imap <F5> <ESC>:w<CR>:!$SHELL "%"<CR>
+  augroup END
 endif
 
 " ------------------
@@ -284,6 +287,7 @@ inoremap <silent> <Home> <C-O>:call SmartHome()<CR>
 " map highlighting group under cursor
 map <C-S-H> :call <SID>SynStack()<CR>
 
+source ~/.vim/config/vimrc
 
 " DON'T EDIT BELOW
 
@@ -295,3 +299,4 @@ endfor
 for f in split( glob('~/.vim/config/*/vimrc'), '\n' )
   exe 'source' f
 endfor
+

@@ -1,6 +1,6 @@
 " ctrlp.vim :CtrlPBuffer - show all open buffers
 map  <F2>       :CtrlPBuffer<CR>
-map  <leader>b  :CtrlPBuffer<CR>
+map  <leader>bs  :CtrlPBuffer<CR>
 imap <F2>       <ESC>:CtrlPBuffer<CR>
 
 " Change the default command to invoke CtrlP
