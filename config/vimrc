@@ -28,7 +28,6 @@ let NERDTreeQuitOnOpen=1
 
 " }}}
 
-
 " mappings {{{
 inoremap jj <ESC>
 noremap <Space> i<Space><Esc>
@@ -54,6 +53,9 @@ inoremap <C-D> <esc>ddi
 " scroll continuously
 noremap <leader>s <C-E>j:sleep 650m<CR><leader>s
 noremap <leader>S <C-E>j:sleep 450m<CR><leader>S
+" scroll in insert mode
+inoremap <c-e> <c-x><c-e>
+inoremap <c-y> <c-x><c-y>
 " surrounds word with double quotes
 nnoremap <leader>2 vie<esc>a"<esc>bi"<esc>E
 " surrounds word with single quotes
@@ -96,6 +98,11 @@ augroup filetype_xml
     autocmd FileType xml setlocal shiftwidth=2 tabstop=2
 augroup END
 
+augroup filetype_json
+    autocmd!
+    autocmd FileType json setlocal shiftwidth=2 tabstop=2
+augroup END
+
 augroup filetype_tex
     autocmd!
     autocmd FileType tex setlocal shiftwidth=2 tabstop=2
@@ -103,11 +110,23 @@ augroup filetype_tex
     autocmd FileType tex inoremap <buffer> <f5> <esc>:w<cr>:call BuildTex()<cr>
 augroup END
 
+augroup filetype_text
+    autocmd!
+    autocmd FileType text setlocal nolist
+augroup END
+
 augroup filetype_make
     autocmd!
     autocmd FileType tex setlocal noexpandtab
     autocmd FileType tex setlocal tabstop=4
 augroup END
+
+augroup filetype_js
+    autocmd!
+    autocmd FileType javascript noremap <buffer> <f5> :w<cr>:call RunNode()<cr>
+    autocmd FileType javascript inoremap <buffer> <f5> <esc>:w<cr>:call RunNode()<cr>
+augroup END
+
 " }}}
 
 
@@ -185,6 +204,32 @@ function! BuildTex()
     execute "make " . filename . ".pdf"
 endfunction
 " }}}
+"
+function! RunNode()
+    let filename = expand("%")
+    let buflist = BuffersList()
+    let startup = ""
+    for buf in buflist
+        "echo getbufline(buf, 1)
+        if getbufline(buf, 1)[0] ==? '// node.startup'
+            let startup = buf
+        endif
+    endfor
+    "echo getbufline(bufname(3), 1, 3)
+    "echo startup
+    execute "!node " . startup
+endfunction
+"
+function! BuffersList()
+    let buffers = range(0, bufnr('$'))
+    let res = []
+    for buf in buffers
+        if buflisted(buf)
+            call add(res, bufname(buf))
+        endif
+    endfor
+    return res
+endfunction
 " }}}
 
 
