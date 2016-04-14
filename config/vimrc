@@ -77,8 +77,10 @@ onoremap il( :<C-U>normal! F)hvT(<cr>
 onoremap ih :<C-U>execute "normal! ?^==\\\|--\\+$\r:nohlsearch\rkvg_"<cr>
  " move over markdown heading including -/=
 onoremap ah :<C-U>execute "normal! ?^==\\\|--\\+$\r:nohlsearch\rg_vk0"<cr>
-" }}}
 
+" zeige die foldings an und aus
+nnoremap <leader>f :call FoldColumnToggle()<cr>
+" }}}
 
 " autocmds {{{
 augroup vimrc_autocmds
@@ -129,11 +131,9 @@ augroup END
 
 " }}}
 
-
 " commands {{{
 command! -nargs=1 Bs :call BufferSelect("<args>")
 " }}}
-
 
 " functions {{{
 " Buffer select {{{
@@ -194,7 +194,7 @@ function! AirlineInit()
     let g:airline_symbols.whitespace = 'Ξ'
 
     " sections
-    let g:airline_section_z = '%3p%% | %l of %L | %c'
+    let g:airline_section_z = '%3p%% | %l of %L | %3c'
 endfunction
 " }}}
 
@@ -205,6 +205,8 @@ function! BuildTex()
 endfunction
 " }}}
 "
+" {{{ startet node.js mit dem file, das // node.starup als erste Zeile hat.
+" Das File muss in einem Buffer sein.
 function! RunNode()
     let filename = expand("%")
     let buflist = BuffersList()
@@ -217,9 +219,15 @@ function! RunNode()
     endfor
     "echo getbufline(bufname(3), 1, 3)
     "echo startup
-    execute "!node " . startup
+    if startup ==? ""
+        echoerr 'No startup file  found (// node.startup)'
+    else
+        execute "!node " . startup
+    endif
 endfunction
+" }}}
 "
+" {{{ gibt ein Array mit den Buffers zurück
 function! BuffersList()
     let buffers = range(0, bufnr('$'))
     let res = []
@@ -231,5 +239,13 @@ function! BuffersList()
     return res
 endfunction
 " }}}
-
+"
+" fold column
+function! FoldColumnToggle()
+    if &foldcolumn
+        setlocal foldcolumn=0
+    else
+        setlocal foldcolumn=4
+endfunction
+" }}}
 
