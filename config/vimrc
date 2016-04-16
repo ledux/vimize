@@ -24,6 +24,8 @@ set hidden
 " enable backupfiles
 set backup
 
+set langmap=[ü,]ä
+
 let NERDTreeQuitOnOpen=1
 
 " }}}
@@ -40,7 +42,7 @@ nnoremap <leader>ea :split $HOME/.vim/config/abbreviations.vim<CR>
 noremap <leader>w :bdelete<CR>
 noremap <leader>W :bdelete!<CR>
 inoremap <leader>w <ESC>:bdelete<CR>
-inoremap <leader>W :bdelete!<CR>
+inoremap <leader>W <ESC>:bdelete!<CR>
 
 " window vergrössern
 noremap + <C-W>+
@@ -80,6 +82,9 @@ onoremap ah :<C-U>execute "normal! ?^==\\\|--\\+$\r:nohlsearch\rg_vk0"<cr>
 
 " zeige die foldings an und aus
 nnoremap <leader>f :call FoldColumnToggle()<cr>
+
+" füge ein falsches Wort zu den abbrevations
+nnoremap <leader>aa :call AddToAbbr()<cr>
 " }}}
 
 " autocmds {{{
@@ -240,13 +245,22 @@ function! BuffersList()
 endfunction
 " }}}
 "
-" fold column
+" {{{ fold column
 function! FoldColumnToggle()
     if &foldcolumn
         setlocal foldcolumn=0
     else
         setlocal foldcolumn=4
     endif
+endfunction
+" }}}
+"
+" {{{ add to abbrevations
+function! AddToAbbr()
+    let falseWord = expand("<cword>")
+    let correctWord = input("Replace " . falseWord . " with: ")
+    let insertText = "iabbrev " . falseWord . " " . correctWord
+    normal! :!echo $insertText >>
 endfunction
 " }}}
 
