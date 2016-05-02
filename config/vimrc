@@ -24,19 +24,26 @@ set hidden
 " enable backupfiles
 set backup
 
-set langmap=[ü,]ä
+" Scrolling
+set scrolloff=6         " start scrolling when 8 Lines from bottom/top
+
+"set langmap=[ü,]ä
 
 let NERDTreeQuitOnOpen=1
 
+"let g:ctrlp_cmd = 'CtrlPMRUFiles'
+let g:UltiSnipsExpandTrigger="<c-x>"
 " }}}
 
 " mappings {{{
 inoremap jj <ESC>
 noremap <Space> i<Space><Esc>
 " edit personal vimrc
-nnoremap <leader>ev :split $HOME/.vim/config/vimrc<CR>
+nnoremap <leader>ev :edit $HOME/.vim/config/vimrc<CR>
+nnoremap <leader>sv :split $HOME/.vim/config/vimrc<CR>
 " edit personal abbrevations
 nnoremap <leader>ea :split $HOME/.vim/config/abbreviations.vim<CR>
+nnoremap <leader>sa :split $HOME/.vim/config/abbreviations.vim<CR>
 
 " close buffer
 noremap <leader>w :bdelete<CR>
@@ -90,8 +97,8 @@ nnoremap <leader>aa :call AddToAbbr()<cr>
 " autocmds {{{
 augroup vimrc_autocmds
     autocmd!
-    autocmd BufEnter * highlight OverLength ctermbg=darkgray guibg=#592929
-    autocmd BufEnter * match Overlength /\%100v.*/
+    "autocmd BufEnter * highlight OverLength ctermbg=darkgray guibg=#592929
+    "autocmd BufEnter * match Overlength /\%100v.*/
     autocmd VimEnter * call AirlineInit()
 augroup END
 
@@ -227,7 +234,7 @@ function! RunNode()
     if startup ==? ""
         echoerr 'No startup file  found (// node.startup)'
     else
-        execute "!node " . startup
+        execute "!node-debug " . startup
     endif
 endfunction
 " }}}
@@ -263,4 +270,15 @@ function! AddToAbbr()
     normal! :!echo $insertText >>
 endfunction
 " }}}
+
+" }}}
+
+
+" ==== TEST SETTINGS latex-tables =============
+
+let g:lt_rowcount=4           " How many rows the table should have
+let g:lt_columncount=4        " How many columns the table should have
+let g:lt_alignment='l'          " The alignment of the text inside the cells
+                            " l = left; r = right; c = center;
+let g:lt_layout='+'             " borders. Possible Values are
 
