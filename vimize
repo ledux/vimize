@@ -211,7 +211,16 @@ case $1 in
   ;;
 
 *)
-  echo "that option is not recognized"
+  #echo "that option is not recognized"
+  echo "usage:"
+  echo "  init:   install all plugins in src.list"
+  echo "  add:    add plugin to repo"
+  echo "  ls:     list plugins in src.list"
+  echo "  edit:   edit custom config of plugin"
+  echo "  update: update plugins (git pull --rebase )"
+  echo "  remove: remove plugin"
+  echo "  clone:  clone to other computer"
+  echo "  pull:   pull from remote computer"
   ;;
 
 esac
