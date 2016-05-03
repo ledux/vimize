@@ -1,0 +1,31 @@
+
+" setzt closing auf nächste zeile, auch wenn text nach opening
+" :h delimitMateExpansion
+let delimitMate_expand_cr = 2
+"|'delimitMate_expand_space'|      Turns on/off the expansion of <Space>.
+let delimitMate_expand_space = 1
+let delimitMate_nesting_quotes = ['"','`', "'"]
+
+"When this option is set to 1 the expansion of space and cr will also be
+"applied to quotes. Read |delimitMateExpansion| for details.
+let delimitMate_expand_inside_quotes = 1
+"This option turns on/off the jumping over <CR> and <Space> expansions when
+"inserting closing matchpairs. Read |delimitMateExpansion| for details.
+let delimitMate_jump_expansion = 1
+
+"This option turns on/off the balancing of matching pairs
+":h delimitMateBalance
+let delimitMate_balance_matchpairs = 1
+
+"This options turns delimitMate off for the listed file types, use this option
+let delimitMate_excluded_ft = "mail,txt"
+
+"0 -> never
+"1 -> when inserting any matchpair
+"2 -> when expanding car return in matchpair
+let b:delimitMate_insert_eol_marker = 1
+"The contents of this string will be inserted after the closing matchpair or
+"quote when the respective opening matchpair or quote is inserted at the end
+"of the line.
+let b:delimitMate_eol_marker = ""
+
