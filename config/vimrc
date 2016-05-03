@@ -1,4 +1,5 @@
 source  $HOME/.vim/config/abbreviations.vim
+Helptags "laedt helpfiles und tags
 
 " variablen setzen {{{
 set backupdir=~/.vim/backup,.
@@ -13,6 +14,7 @@ set colorcolumn=100
 " sollte whitespaces einfärben (whitespace pl)
 "set syntax=whitespace
 
+" eigt tabs und andere whitespaces
 set list
 set listchars=tab:>-
 
@@ -74,11 +76,11 @@ nnoremap <leader>t <c-]>
 " jump back
 nnoremap <leader>T <c-o>
 "
-" move till closing parantheses
-onoremap p t)
 " move till closing paranthese
+onoremap p t)
+" move till closing brace
 onoremap P t}
-" move over content of next parantheses
+" move over content of next paranthese
 onoremap in( :<C-U>normal! f(lvt)<CR>
 " move over content of last parantheses
 onoremap il( :<C-U>normal! F)hvT(<cr>
@@ -92,16 +94,12 @@ nnoremap <leader>f :call FoldColumnToggle()<cr>
 
 " füge ein falsches Wort zu den abbrevations
 nnoremap <leader>aa :call AddToAbbr()<cr>
+
+" Üben!!!"
+noremap ddO <nop>
 " }}}
 
 " autocmds {{{
-augroup vimrc_autocmds
-    autocmd!
-    "autocmd BufEnter * highlight OverLength ctermbg=darkgray guibg=#592929
-    "autocmd BufEnter * match Overlength /\%100v.*/
-    autocmd VimEnter * call AirlineInit()
-augroup END
-
 augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
@@ -178,37 +176,6 @@ function! BufferSelect(pattern)
 endfunction
 " }}}
 
-" {{{ airline init
-function! AirlineInit()
-    "let g:airline_powerline_fonts=1
-
-    " themes
-    AirlineTheme term
-    ":AirlineTheme understated
-    ":AirlineTheme kolor
-
-    if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-    endif
-
-    " unicode symbols für separators
-    "let g:airline_left_sep = '»'
-    let g:airline_left_sep = '▶'
-    "let g:airline_right_sep = '«'
-    let g:airline_right_sep = '◀'
-    "let g:airline_symbols.linenr = '␊'
-    "let g:airline_symbols.linenr = '␤'
-    let g:airline_symbols.linenr = '¶'
-    let g:airline_symbols.branch = '⎇'
-    let g:airline_symbols.paste = 'ρ'
-    "let g:airline_symbols.paste = 'Þ'
-    "let g:airline_symbols.paste = '∥'
-    let g:airline_symbols.whitespace = 'Ξ'
-
-    " sections
-    let g:airline_section_z = '%3p%% | %l of %L | %3c'
-endfunction
-" }}}
 
 " {{{ build tex
 function! BuildTex()
