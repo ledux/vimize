@@ -1,1 +1,11 @@
+#!/bin/bash
+
+if [ -z `which easy_install3` ]; then # not null
+    sudo apt-get install python3-setuptools
+fi
+
+if [ -z `which pip` ]; then # not null
+    sudo easy_install3 pip
+fi
+
 sudo pip install pylint
