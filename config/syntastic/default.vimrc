@@ -9,3 +9,5 @@ let g:syntastic_check_on_wq = 0
 " 2 to first  error
 " 3 to
 let g:syntastic_auto_jump = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
