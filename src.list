@@ -60,3 +60,6 @@ https://github.com/lervag/vimtex.git
 https://github.com/Townk/vim-autoclose.git
 https://github.com/vim-scripts/AutoClose.git
 https://github.com/Raimondi/delimitMate.git
+
+# integrates gdb debugger in vim
+https://github.com/vim-scripts/Conque-GDB.git
