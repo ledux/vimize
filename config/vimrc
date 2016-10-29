@@ -24,7 +24,7 @@ set hidden
 "set autowrite
 
 " enable backupfiles
-set backup
+set nobackup
 
 " Scrolling
 set scrolloff=6         " start scrolling when 8 Lines from bottom/top
@@ -95,8 +95,7 @@ nnoremap <leader>f :call FoldColumnToggle()<cr>
 " füge ein falsches Wort zu den abbrevations
 nnoremap <leader>aa :call AddToAbbr()<cr>
 
-" Üben!!!"
-noremap ddO <nop>
+" Üben!!! learn"
 " }}}
 
 " autocmds {{{
