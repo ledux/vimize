@@ -16,7 +16,10 @@ https://github.com/vim-scripts/errormarker.vim.git
 
 # power lines
 #https://github.com/Lokaltog/vim-powerline.git
+
+# footer line and themes
 https://github.com/bling/vim-airline.git
+https://github.com/vim-airline/vim-airline-themes.git
 #https://github.com/bling/vim-bufferline.git
 
 https://github.com/tsaleh/vim-matchit.git
@@ -63,3 +66,7 @@ https://github.com/Raimondi/delimitMate.git
 
 # integrates gdb debugger in vim
 https://github.com/vim-scripts/Conque-GDB.git
+
+# shows git changes in vim
+https://github.com/airblade/vim-gitgutter.git
+
