@@ -1,3 +1,5 @@
+" disable some plugins
+let g:pathogen_disabled = ['vimtex']
 " pathogen for bundles
 call pathogen#infect()
 
