@@ -72,9 +72,9 @@ nnoremap <leader>2 vie<esc>a"<esc>bi"<esc>E
 " surrounds word with single quotes
 nnoremap <leader>' vie<esc>a'<esc>bi'<esc>E
 " jump to anchor (help)
-nnoremap <leader>t <c-]>
+nnoremap <leader>a <c-]>
 " jump back
-nnoremap <leader>T <c-o>
+nnoremap <leader>A <c-o>
 "
 " move till closing paranthese
 onoremap p t)
@@ -117,6 +117,7 @@ augroup END
 augroup filetype_tex
     autocmd!
     autocmd FileType tex setlocal shiftwidth=2 tabstop=2
+    autocmd FileType tex setlocal textwidth=100
     autocmd FileType tex noremap <buffer> <f5> :w<cr>:call BuildTex()<cr>
     autocmd FileType tex inoremap <buffer> <f5> <esc>:w<cr>:call BuildTex()<cr>
 augroup END
