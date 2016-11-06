@@ -39,6 +39,7 @@ let g:UltiSnipsExpandTrigger="<c-x>"
 
 " mappings {{{
 inoremap jj <ESC>
+inoremap jk <ESC>
 noremap <Space> i<Space><Esc>
 " edit personal vimrc
 nnoremap <leader>ev :edit $HOME/.vim/config/vimrc<CR>
@@ -72,9 +73,9 @@ nnoremap <leader>2 vie<esc>a"<esc>bi"<esc>E
 " surrounds word with single quotes
 nnoremap <leader>' vie<esc>a'<esc>bi'<esc>E
 " jump to anchor (help)
-nnoremap <leader>a <c-]>
+nnoremap <leader>l <c-]>
 " jump back
-nnoremap <leader>A <c-o>
+nnoremap <leader>L <c-o>
 "
 " move till closing paranthese
 onoremap p t)

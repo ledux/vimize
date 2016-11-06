@@ -186,7 +186,7 @@ nnoremap <leader>3 3
 nnoremap <leader>4 4
 
 " switch background mode
-nnoremap <leader>l :set background=light<CR>
+"nnoremap <leader>l :set background=light<CR>
 
 " clear search pattern
 map  <S-F2>     :nohlsearch<CR>
