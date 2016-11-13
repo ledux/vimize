@@ -31,8 +31,15 @@ augroup END
 let g:notes_directories = ['~/documents/owncloud/privat/notes']
 " changes quotes to nicer ones
 let g:notes_smart_quotes = 1
+" file where the search index is stored
+let g:notes_tagsindex = '~/documents/owncloud/privat/notes/.index/index.pickle'
+" files where the tags are stored
+let g:notes_tagsindex = '~/documents/owncloud/privat/notes/.index/tags.txt'
+
+let g:diary_dir = '/home/lueq/documents/owncloud/privat/diaries/2016'
 
 function! DiaryEntry()
+    "execute 'lcd g:diary_dir'
     let l:date = strftime("%c")
     execute 'Note ' l:date
 endfunction
