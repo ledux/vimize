@@ -1,5 +1,5 @@
 " disable some plugins
-let g:pathogen_disabled = ['vimtex']
+let g:pathogen_disabled = ['vimtex', 'vim-pad']
 " pathogen for bundles
 call pathogen#infect()
 
