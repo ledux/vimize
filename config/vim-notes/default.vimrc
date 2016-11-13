@@ -10,20 +10,22 @@ nnoremap <Leader>ns viW:NoteFromSelectedText<CR>
 nnoremap <Leader>nd :DeleteNote<CR>
 " delete despite unsaved changes in buffer
 nnoremap <Leader>nD :DeleteNote!<CR>
+"lists notes by modification date
+nnoremap <Leader>nr :RecentNotes
 " searches notes by word  under the cursor (also by tags)
-nnoremap <F12> :SearchNotes<CR>
-
-" TODO nur in filetype notes
-"nnoremap <F4> :ShowTaggedNotes<Space>
-"nnoremap <F5> :w<CR>:NoteToHtml<CR>
-"inoremap <F5> <ESC>:w<CR>:NoteToHtml<CR>
-
+autocmd FileType notes nnoremap <F12> :SearchNotes<CR>
 "TODO find a shortcut
 "finds related notes
 "nnoremap <Leader> :RelatedNotes
 
-"lists notes by modification date
-nnoremap <Leader>nr :RecentNotes
+augroup filetype_notes
+    autocmd!
+    autocmd FileType notes nnoremap <F4> :ShowTaggedNotes<Space>
+    autocmd FileType notes nnoremap <F5> :w<CR>:NoteToHtml<CR>
+    autocmd FileType notes inoremap <F5> <ESC>:w<CR>:NoteToHtml<CR>
+augroup END
+
+
 
 "let g:notes_directories = ['~/documents/owncloud/privat/notes', '~/documents/owncloud/privat/diaries/2016']
 let g:notes_directories = ['~/documents/owncloud/privat/notes']
