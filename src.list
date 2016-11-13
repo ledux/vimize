@@ -70,3 +70,15 @@ https://github.com/vim-scripts/Conque-GDB.git
 # shows git changes in vim
 https://github.com/airblade/vim-gitgutter.git
 
+# A quick notetaking plugin for vim
+https://github.com/fmoralesc/vim-pad.git
+
+# Easy note taking in Vim
+https://github.com/xolox/vim-notes.git
+# Miscellaneous auto-load Vim scripts, used for vim-notes
+https://github.com/xolox/vim-misc.git
+
+# Create and follow interactive tutorials.
+https://github.com/fmoralesc/vim-tutor-mode.git
+
+
