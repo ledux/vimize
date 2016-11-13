@@ -1,7 +1,7 @@
 let g:pad#dir = '~/documents/owncloud/privat/notes'
 " default mapping
-" let g:pad#maps#list           default = ["<leader><esc>", "<C-Esc>"]
-" let g:pad#maps#new                    = ["<leader>n", "<S-Esc>"]
+let g:pad#maps#list                   = ["<leader>pl", "<C-Esc>"]
+let g:pad#maps#new                    = ["<leader>pn", "<S-Esc>"]
 " let g:pad#maps#search                 = "<leader>ss"
 " let g:pad#maps#incsearch              = "<leader>s<leader>"
 " let g:pad#maps#newsilent              = "<leader>s!"
