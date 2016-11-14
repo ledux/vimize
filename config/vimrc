@@ -31,7 +31,6 @@ set scrolloff=6         " start scrolling when 8 Lines from bottom/top
 
 "set langmap=[ü,]ä
 
-let NERDTreeQuitOnOpen=1
 
 "let g:ctrlp_cmd = 'CtrlPMRUFiles'
 let g:UltiSnipsExpandTrigger="<c-x>"
