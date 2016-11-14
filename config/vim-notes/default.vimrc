@@ -23,6 +23,7 @@ augroup filetype_notes
     autocmd FileType notes nnoremap <F4> :ShowTaggedNotes<Space>
     autocmd FileType notes nnoremap <F5> :w<CR>:NoteToHtml<CR>
     autocmd FileType notes inoremap <F5> <ESC>:w<CR>:NoteToHtml<CR>
+    autocmd FileType notes setlocal textwidth=100
 augroup END
 
 
@@ -35,6 +36,8 @@ let g:notes_smart_quotes = 1
 let g:notes_tagsindex = '~/documents/owncloud/privat/notes/.index/index.pickle'
 " files where the tags are stored
 let g:notes_tagsindex = '~/documents/owncloud/privat/notes/.index/tags.txt'
+
+let g:notes_new_note_template = '~/.vim/config/vim-notes/template'
 
 let g:diary_dir = '/home/lueq/documents/owncloud/privat/diaries/2016'
 
