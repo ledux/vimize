@@ -24,6 +24,7 @@ augroup filetype_notes
     autocmd FileType notes nnoremap <F5> :w<CR>:NoteToHtml<CR>
     autocmd FileType notes inoremap <F5> <ESC>:w<CR>:NoteToHtml<CR>
     autocmd FileType notes setlocal textwidth=100
+    autocmd FileType notes setlocal spell
 augroup END
 
 
