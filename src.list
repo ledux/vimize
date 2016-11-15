@@ -81,4 +81,9 @@ https://github.com/xolox/vim-misc.git
 # Create and follow interactive tutorials.
 https://github.com/fmoralesc/vim-tutor-mode.git
 
+#A calendar application for Vim
+https://github.com/itchyny/calendar.vim.git
+
+# conky syntax
+https://github.com/smancill/conky-syntax.vim.git
 
