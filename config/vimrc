@@ -95,6 +95,9 @@ nnoremap <leader>f :call FoldColumnToggle()<cr>
 " füge ein falsches Wort zu den abbrevations
 nnoremap <leader>aa :call AddToAbbr()<cr>
 
+" zeige vorschläge für falsche wörter
+nnoremap zs z=
+
 " Üben!!! learn"
 " }}}
 
@@ -137,6 +140,13 @@ augroup filetype_js
     autocmd!
     autocmd FileType javascript noremap <buffer> <f5> :w<cr>:call RunNode()<cr>
     autocmd FileType javascript inoremap <buffer> <f5> <esc>:w<cr>:call RunNode()<cr>
+augroup END
+
+augroup filetype_md
+    autocmd!
+    autocmd FileType markdown setlocal textwidth=100
+    autocmd FileType markdown noremap <buffer> <f5> :w<cr>:call BuildMd()<cr>
+    autocmd FileType markdown inoremap <buffer> <f5> <esc>:w<cr>:call BuildMd()<cr>
 augroup END
 
 " }}}
@@ -183,6 +193,12 @@ function! BuildTex()
     execute "make " . filename . ".pdf"
 endfunction
 " }}}
+"
+function! BuildMd()
+    let filename = expand("%:r:t")
+    let file_ext = expand("%:t")
+    execute "!pandoc " . file_ext . " -f markdown -t latex -s -o " . filename . ".pdf"
+endfunction
 "
 " {{{ startet node.js mit dem file, das // node.starup als erste Zeile hat.
 " Das File muss in einem Buffer sein.
