@@ -3,6 +3,8 @@ nnoremap <Leader>ne :Note<Space>
 
 nnoremap <Leader>nn :call DiaryEntry()<CR>
 
+nnoremap <Leader>na :call NaDiary()<CR>
+
 vnoremap <Leader>ns :NoteFromSelectedText<CR>
 " creates a note from the word under the cursor
 nnoremap <Leader>ns viW:NoteFromSelectedText<CR>
@@ -12,11 +14,12 @@ nnoremap <Leader>nd :DeleteNote<CR>
 nnoremap <Leader>nD :DeleteNote!<CR>
 "lists notes by modification date
 nnoremap <Leader>nr :RecentNotes
-" searches notes by word  under the cursor (also by tags)
-autocmd FileType notes nnoremap <F12> :SearchNotes<CR>
 "TODO find a shortcut
 "finds related notes
 "nnoremap <Leader> :RelatedNotes
+nnoremap <Leader>nt :ShowTaggedNotes<CR>
+
+nnoremap <Leader>nT :NewNextTemplate<CR>
 
 augroup filetype_notes
     autocmd!
@@ -25,6 +28,8 @@ augroup filetype_notes
     autocmd FileType notes inoremap <F5> <ESC>:w<CR>:NoteToHtml<CR>
     autocmd FileType notes setlocal textwidth=100
     autocmd FileType notes setlocal spell
+    " searches notes by word  under the cursor (also by tags)
+    autocmd FileType notes nnoremap <F12> :SearchNotes<CR>
 augroup END
 
 
@@ -46,5 +51,13 @@ function! DiaryEntry()
     "execute 'lcd g:diary_dir'
     let l:date = strftime("%c")
     execute 'Note ' l:date
+endfunction
+
+function! NaDiary()
+    let template = g:notes_new_note_template
+    let g:notes_new_note_template = '~/.vim/config/vim-notes/na-diary'
+    let l:date = strftime("%c")
+    execute 'Note ' l:date
+    let g:notes_new_note_template = template
 endfunction
 
