@@ -97,6 +97,8 @@ nnoremap <leader>aa :call AddToAbbr()<cr>
 
 " zeige vorschläge für falsche wörter
 nnoremap zs z=
+" den ersten Vorschlag für die Verbesserung übernehmen
+nnoremap zS z=1<CR>
 
 " Üben!!! learn"
 " }}}
@@ -147,6 +149,8 @@ augroup filetype_md
     autocmd FileType markdown setlocal textwidth=100
     autocmd FileType markdown noremap <buffer> <f5> :w<cr>:call BuildMd()<cr>
     autocmd FileType markdown inoremap <buffer> <f5> <esc>:w<cr>:call BuildMd()<cr>
+    autocmd FileType markdown setlocal foldexpr=MarkdownLevel()
+    autocmd FileType markdown setlocal foldmethod=expr
 augroup END
 
 " }}}
@@ -197,7 +201,9 @@ endfunction
 function! BuildMd()
     let filename = expand("%:r:t")
     let file_ext = expand("%:t")
-    execute "!pandoc " . file_ext . " -f markdown -t latex -s -o " . filename . ".pdf"
+    " TODO: --number-sections als variable setzen, die dann pro file neu
+    " gesetzt werden kann
+    execute "!pandoc --number-sections " . file_ext . " -f markdown -t latex -s -o " . filename . ".pdf"
 endfunction
 "
 " {{{ startet node.js mit dem file, das // node.starup als erste Zeile hat.
@@ -251,6 +257,17 @@ function! AddToAbbr()
     let correctWord = input("Replace " . falseWord . " with: ")
     let insertText = "iabbrev " . falseWord . " " . correctWord
     normal! :!echo $insertText >>
+endfunction
+" }}}
+
+" {{{ Foldlevel for Markdown
+function! MarkdownLevel()
+    let header = matchstr(getline(v:lnum), '^#\+')
+    if (empty(header))
+        return "="
+    else
+        return ">" . len(header)
+    endif
 endfunction
 " }}}
 
