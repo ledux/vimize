@@ -47,6 +47,8 @@ let g:notes_new_note_template = '~/.vim/config/vim-notes/template'
 
 let g:diary_dir = '/home/lueq/documents/owncloud/privat/diaries/2016'
 
+let g:notes_templates = ["~/.vim/config/vim-notes/jft1", "~/.vim/config/vim-notes/jft2", "~/.vim/config/vim-notes/jft3", "~/.vim/config/vim-notes/jft4", "~/.vim/config/vim-notes/jft5"]
+
 function! DiaryEntry()
     "execute 'lcd g:diary_dir'
     let l:date = strftime("%c")
