@@ -6,6 +6,7 @@ call pathogen#infect()
 " public setup
 " ============
 syntax enable
+syntax on
 
 " clear highlighting
 highlight clear

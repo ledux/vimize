@@ -119,14 +119,6 @@ augroup filetype_json
     autocmd FileType json setlocal shiftwidth=2 tabstop=2
 augroup END
 
-augroup filetype_tex
-    autocmd!
-    autocmd FileType tex setlocal shiftwidth=2 tabstop=2
-    autocmd FileType tex setlocal textwidth=100
-    autocmd FileType tex noremap <buffer> <f5> :w<cr>:call BuildTex()<cr>
-    autocmd FileType tex inoremap <buffer> <f5> <esc>:w<cr>:call BuildTex()<cr>
-augroup END
-
 augroup filetype_text
     autocmd!
     autocmd FileType text setlocal nolist
@@ -191,12 +183,6 @@ endfunction
 " }}}
 
 
-" {{{ build tex
-function! BuildTex()
-    let filename = expand("%:r:t")
-    execute "make " . filename . ".pdf"
-endfunction
-" }}}
 "
 function! BuildMd()
     let filename = expand("%:r:t")
