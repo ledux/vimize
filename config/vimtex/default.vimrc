@@ -5,6 +5,7 @@ let g:tex_comment_nospell= 1
 
 augroup tex_specifics
     autocmd!
+    autocmd FileType tex let maplocalleader=","
     "autocmd FileType tex inoremap <cr> <esc>:call ContinueItemize()<cr>
 augroup END
 
