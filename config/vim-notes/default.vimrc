@@ -14,9 +14,8 @@ nnoremap <Leader>nd :DeleteNote<CR>
 nnoremap <Leader>nD :DeleteNote!<CR>
 "lists notes by modification date
 nnoremap <Leader>nr :RecentNotes
-"TODO find a shortcut
 "finds related notes
-"nnoremap <Leader> :RelatedNotes
+nnoremap <Leader>nR :RelatedNotes
 nnoremap <Leader>nt :ShowTaggedNotes<CR>
 
 nnoremap <Leader>nT :NewNextTemplate<CR>
@@ -48,6 +47,9 @@ let g:notes_new_note_template = '~/.vim/config/vim-notes/template'
 let g:diary_dir = '/home/lueq/documents/owncloud/privat/diaries/2016'
 
 let g:notes_templates = ["~/.vim/config/vim-notes/jft1", "~/.vim/config/vim-notes/jft2", "~/.vim/config/vim-notes/jft3", "~/.vim/config/vim-notes/jft4", "~/.vim/config/vim-notes/jft5"]
+
+"print debug messages
+let g:notes_debug=0
 
 function! DiaryEntry()
     "execute 'lcd g:diary_dir'
