@@ -15,7 +15,7 @@ nnoremap <Leader>nD :DeleteNote!<CR>
 "lists notes by modification date
 nnoremap <Leader>nr :RecentNotes
 "finds related notes
-nnoremap <Leader>nR :RelatedNotes
+nnoremap <Leader>nR :RelatedNotes<CR>
 nnoremap <Leader>nt :ShowTaggedNotes<CR>
 
 nnoremap <Leader>nT :NewNextTemplate<CR>
