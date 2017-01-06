@@ -146,7 +146,7 @@ if has("autocmd")
   autocmd CursorMovedI,InsertLeave * if pumvisible() == 0 | silent! pclose | endif
 
   " remove trailing whitespace on write
-  autocmd BufWritePre * :%s/\s\+$//e
+  "autocmd BufWritePre * :%s/\s\+$//e
 
   " source the vimrc file after saving it
   autocmd BufWritePost .\=vimrc source $MYVIMRC
