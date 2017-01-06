@@ -19,6 +19,6 @@ nmap <Leader>hs <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterUndoHunk
 
 " preview changes: default <Leader>hp
-nmap <Leader>hp <Plug>GitGutterPreviewHunk
+nmap <Leader>hP <Plug>GitGutterPreviewHunk
 
 
