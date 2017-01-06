@@ -35,6 +35,8 @@ set scrolloff=6         " start scrolling when 8 Lines from bottom/top
 "let g:ctrlp_cmd = 'CtrlPMRUFiles'
 let g:UltiSnipsExpandTrigger="<c-x>"
 " }}}
+"
+let g:tlist_markdown_settings='markdown;h:Headings'
 
 " mappings {{{
 inoremap jj <ESC>
@@ -98,7 +100,7 @@ nnoremap <leader>aa :call AddToAbbr()<cr>
 " zeige vorschläge für falsche wörter
 nnoremap zs z=
 " den ersten Vorschlag für die Verbesserung übernehmen
-nnoremap zS z=1<CR>
+nnoremap zS 1z=
 
 " Üben!!! learn"
 " }}}
@@ -144,7 +146,6 @@ augroup filetype_md
     autocmd FileType markdown setlocal foldexpr=MarkdownLevel()
     autocmd FileType markdown setlocal foldmethod=expr
 augroup END
-
 " }}}
 
 " commands {{{
@@ -189,7 +190,7 @@ function! BuildMd()
     let file_ext = expand("%:t")
     " TODO: --number-sections als variable setzen, die dann pro file neu
     " gesetzt werden kann
-    execute "!pandoc --number-sections " . file_ext . " -f markdown -t latex -s -o " . filename . ".pdf"
+    execute "!pandoc --number-sections --toc --toc-depth=3 " . file_ext . " -f markdown -t latex -s -o " . filename . ".pdf"
 endfunction
 "
 " {{{ startet node.js mit dem file, das // node.starup als erste Zeile hat.
