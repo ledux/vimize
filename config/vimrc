@@ -27,7 +27,7 @@ set hidden
 set nobackup
 
 " Scrolling
-set scrolloff=6         " start scrolling when 8 Lines from bottom/top
+set scrolloff=6         " start scrolling when X Lines from bottom/top
 
 "set langmap=[ü,]ä
 
@@ -42,6 +42,8 @@ let g:tlist_markdown_settings='markdown;h:Headings'
 inoremap jj <ESC>
 inoremap jk <ESC>
 noremap <Space> i<Space><Esc>
+nnoremap ü }
+nnoremap è {
 " edit personal vimrc
 nnoremap <leader>ev :edit $HOME/.vim/config/vimrc<CR>
 nnoremap <leader>sv :split $HOME/.vim/config/vimrc<CR>
