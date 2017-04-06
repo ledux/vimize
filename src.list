@@ -97,3 +97,9 @@ https://github.com/python-mode/python-mode.git
 
 # upload files to server
 https://github.com/eshion/vim-sync.git
+
+# php highlighting
+https://github.com/StanAngeloff/php.vim.git
+
+# php auto completion
+https://github.com/shawncplus/phpcomplete.vim.git
