@@ -29,6 +29,7 @@ set nobackup
 " Scrolling
 set scrolloff=6         " start scrolling when X Lines from bottom/top
 
+set modeline
 "set langmap=[ü,]ä
 
 
