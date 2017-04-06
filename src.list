@@ -94,3 +94,6 @@ https://github.com/AndrewRadev/linediff.vim.git
 
 # python ide
 https://github.com/python-mode/python-mode.git
+
+# upload files to server
+https://github.com/eshion/vim-sync.git
