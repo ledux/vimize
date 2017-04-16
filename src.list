@@ -103,3 +103,6 @@ https://github.com/StanAngeloff/php.vim.git
 
 # php auto completion
 https://github.com/shawncplus/phpcomplete.vim.git
+
+# php folding
+https://github.com/vim-scripts/phpfolding.vim.git
