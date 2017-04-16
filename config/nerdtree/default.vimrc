@@ -15,3 +15,4 @@ let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2
 "Tells the NERD tree to automatically remove a buffer when a file is being deleted or renamed
 let NERDTreeAutoDeleteBuffer=1
+let g:NERDTreeWinSize=45
