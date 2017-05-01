@@ -149,6 +149,11 @@ augroup filetype_md
     autocmd FileType markdown setlocal foldexpr=MarkdownLevel()
     autocmd FileType markdown setlocal foldmethod=expr
 augroup END
+
+augroup filetype_php
+    autocmd!
+    autocmd BufWritePost *.php silent !ctags -R --fields=+aimlS --languages=php
+augroup END
 " }}}
 
 " commands {{{

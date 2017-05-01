@@ -1,6 +1,8 @@
 " nerdtree
-map  <F3>      :NERDTreeToggle<CR>
-imap <F3>      <ESC>:NERDTreeToggle<CR>
+" map  <F3>      :NERDTreeToggle<CR>
+" imap <F3>      <ESC>:NERDTreeToggle<CR>
+map  <F3>      :call ToggleNERDTreeWithRefresh()<cr>
+imap <F3>      <ESC>:call ToggleNERDTreeWithRefresh()<cr>
 
 " mappings
 let NERDTreeMapToggleHidden='h'
@@ -16,3 +18,13 @@ let NERDTreeChDirMode=2
 "Tells the NERD tree to automatically remove a buffer when a file is being deleted or renamed
 let NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeWinSize=45
+
+" Collapses on the same line directories that only one child directory.    
+let NERDTreeCascadeSingleChildDir=0
+
+function! ToggleNERDTreeWithRefresh()
+    :NERDTreeToggle
+    if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+        call feedkeys("R")
+    endif
+endfunction
