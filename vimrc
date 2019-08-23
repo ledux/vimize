@@ -15,6 +15,8 @@ set t_Co=256 " enable 256 colors
 
 " limits
 set history=500
+set textwidth=120
+set colorcolumn=120
 
 " map leader key to comma (,)
 let mapleader=","
@@ -194,8 +196,8 @@ map  <S-F2>     :nohlsearch<CR>
 imap <S-F2>     <ESC>:nohlsearch<CR>
 
 " toggle numbering
-map  <F8>      :set number! relativenumber!<CR>
-imap  <F8>     :set number! relativenumber!<CR>
+map  <C-F8>      :set number! relativenumber!<CR>
+imap  <C-F8>     <ESC>:set number! relativenumber!<CR>
 
 " Note: F5 is already mapped in autocmd section
 
