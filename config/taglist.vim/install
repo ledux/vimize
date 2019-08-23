@@ -1,1 +1,1 @@
-sudo aptitude install exuberant-ctags
+sudo apt-get install exuberant-ctags
