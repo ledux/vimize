@@ -157,6 +157,14 @@ augroup filetype_php
     autocmd BufWritePre *.php %s/\s\+$//e
     autocmd BufReadPre *.log :call SyncDownloadFile()
 augroup END
+
+augroup filetyep_yaml
+    autocmd!
+    autocmd FileType yaml setlocal shiftwidth=2
+    autocmd FileType yaml setlocal tabstop=2
+    autocmd FileType yaml setlocal expandtab
+    autocmd FileType yaml setlocal smartindent
+augroup END
 " }}}
 
 " commands {{{
