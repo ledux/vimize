@@ -41,6 +41,7 @@ https://github.com/scrooloose/syntastic.git
 
 # html
 https://github.com/gcmt/breeze.vim.git
+https://github.com/alvan/vim-closetag.git
 
 # better view
 #https://github.com/Yggdroot/indentLine.git
@@ -106,3 +107,9 @@ https://github.com/shawncplus/phpcomplete.vim.git
 
 # php folding
 https://github.com/vim-scripts/phpfolding.vim.git
+
+# Syntax highlighting, matching rules and mappings for markdown
+https://github.com/plasticboy/vim-markdown.git
+
+# Syntax highlighting for ps1 scripts
+git@github.com:PProvost/vim-ps1.git
